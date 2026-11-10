@@ -212,8 +212,8 @@ sequenceDiagram
     participant PIP
     participant PAP
     participant PDP
-    S->>PEP: ReqGetAccess(objectId=ehr-001, op=read)
-    PEP->>CH: ReqGetAccess(objectId=ehr-001, op=read)
+    S->>CH: ReqGetAccess(objectId=ehr-001, op=read)
+    CH->>PEP: ReqGetAccess(objectId=ehr-001, op=read)
     CH->>AU: CheckRevocationList(pk_s)
     CH->>PIP: ReqFetchAttributes(object_id=ehr-001)
     PIP->>CH: RespFetchAttributes({oAtt}=1, {eAtt}=1, SI=2)
