@@ -1,6 +1,6 @@
 # A3P-FACS: Proof-of-Concept Implementation (revised manuscript, R2 with unlinkability fix)
 
-Reference implementation of **A3P-FACS: Anonymous Attribute-based Authentication with Privacy Preserving Approach for Fine-grained Access Control System** (JISAS-D-25-03785R2). It covers:
+Reference implementation of **A3P-FACS: Anonymous Attribute-based Authentication with Privacy Preserving Approach for Fine-grained Access Control System**. It covers:
 
 - **Anonymous credential layer** (`protocol.py`, `lsss.py`): paramSetup, keyGeneration, issueCredential/obtainCredential (Eq. 1), showCredential with general AND/OR LSSS policies, verifyCredential (Eq. 2), traceCredential/judgeCredential (Eq. 3), and the revocation list.
 - **NIST ABAC / XACML layer** (`xacml_layer.py`): PEP, context handler, PIP, PAP and PDP. Anonymous credential verification is embedded in XACML rule evaluation through the custom function `a3p:verifyCredential`.
