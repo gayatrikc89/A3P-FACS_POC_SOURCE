@@ -1,9 +1,9 @@
-# Benchmark Analysis (R2 reference implementation with unlinkability fix)
+# Benchmark Analysis 
 
 Results in `benchmark_results.json` were produced by `python benchmark.py --repetitions 3` with this environment:
 
 - OS: `Linux-6.18.44-fc-v310-x86_64-with-glibc2.39`; Python 3.13.18; py_ecc 8.0.0
-- Hardware: 2-vCPU Intel Xeon cloud VM (not the AMD Ryzen 7 6800H laptop reported in the manuscript)
+- Hardware: 2-vCPU Intel Xeon cloud VM 
 
 **Re-run `benchmark.py` on the machine described in Section 8 of the manuscript before quoting any numbers in the paper.**
 
