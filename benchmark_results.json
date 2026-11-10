@@ -1,0 +1,238 @@
+{
+  "artifact": "A3P-FACS reference implementation (revised manuscript R2)",
+  "environment": {
+    "os": "Linux-6.18.44-fc-v310-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.13.18",
+    "py_ecc": "8.0.0"
+  },
+  "parameters": {
+    "curve": "BLS12-381 (Type-3)",
+    "base_field_bits": 381,
+    "subgroup_order_bits": 255,
+    "hash": "SHA-256",
+    "hash_to_curve": "BLS12381G1_XMD:SHA-256_SSWU_RO_",
+    "subject_attributes": 3
+  },
+  "timings": {
+    "system_initialization/paramSetup": {
+      "median_ms": 21.662196,
+      "min_ms": 21.083545,
+      "max_ms": 22.065485,
+      "mean_ms": 21.603742,
+      "repetitions": 3
+    },
+    "access_credential_setup/keyGeneration_subject": {
+      "median_ms": 247.97085,
+      "min_ms": 245.916432,
+      "max_ms": 248.060225,
+      "mean_ms": 247.31583566666666,
+      "repetitions": 3
+    },
+    "access_credential_setup/keyGeneration_aa": {
+      "median_ms": 266.527887,
+      "min_ms": 263.092817,
+      "max_ms": 307.995656,
+      "mean_ms": 279.2054533333333,
+      "repetitions": 3
+    },
+    "access_credential_setup/issueCredential_3_attributes": {
+      "median_ms": 42.463573,
+      "min_ms": 40.962519,
+      "max_ms": 42.689956,
+      "mean_ms": 42.038682666666666,
+      "repetitions": 3
+    },
+    "access_credential_setup/obtainCredential_eq1": {
+      "median_ms": 726.749639,
+      "min_ms": 725.241306,
+      "max_ms": 731.20617,
+      "mean_ms": 727.7323716666666,
+      "repetitions": 3
+    },
+    "anonymous_verifying/showCredential_1_rows": {
+      "median_ms": 63.804934,
+      "min_ms": 63.302282,
+      "max_ms": 65.233463,
+      "mean_ms": 64.11355966666666,
+      "repetitions": 3
+    },
+    "anonymous_verifying/verifyCredential_eq2_1_rows": {
+      "median_ms": 960.275294,
+      "min_ms": 959.007667,
+      "max_ms": 964.597501,
+      "mean_ms": 961.2934873333334,
+      "repetitions": 3
+    },
+    "anonymous_verifying/showCredential_3_rows": {
+      "median_ms": 69.265006,
+      "min_ms": 68.459023,
+      "max_ms": 70.41633,
+      "mean_ms": 69.38011966666666,
+      "repetitions": 3
+    },
+    "anonymous_verifying/verifyCredential_eq2_3_rows": {
+      "median_ms": 1208.168067,
+      "min_ms": 1206.090723,
+      "max_ms": 1209.884552,
+      "mean_ms": 1208.0477806666668,
+      "repetitions": 3
+    },
+    "anonymous_verifying/showCredential_5_rows": {
+      "median_ms": 71.842826,
+      "min_ms": 71.679741,
+      "max_ms": 72.078174,
+      "mean_ms": 71.86691366666668,
+      "repetitions": 3
+    },
+    "anonymous_verifying/verifyCredential_eq2_5_rows": {
+      "median_ms": 1454.965593,
+      "min_ms": 1449.502229,
+      "max_ms": 1457.378646,
+      "mean_ms": 1453.9488226666665,
+      "repetitions": 3
+    },
+    "inspection/traceCredential": {
+      "median_ms": 4.07839,
+      "min_ms": 4.07062,
+      "max_ms": 4.079667,
+      "mean_ms": 4.076225666666667,
+      "repetitions": 3
+    },
+    "inspection/judgeCredential_eq3": {
+      "median_ms": 487.160456,
+      "min_ms": 486.764608,
+      "max_ms": 488.666375,
+      "mean_ms": 487.5304796666667,
+      "repetitions": 3
+    },
+    "resource_access_control/end_to_end_xacml_request": {
+      "median_ms": 1275.949267,
+      "min_ms": 1275.513149,
+      "max_ms": 1289.356021,
+      "mean_ms": 1280.2728123333334,
+      "repetitions": 3
+    }
+  },
+  "privacy_aware_pip": {
+    "object_25_environment_10_si_0": {
+      "released": 35,
+      "suppressed": 0,
+      "release_ratio": 1.0,
+      "fetchAttributes": {
+        "median_ms": 0.003589988,
+        "min_ms": 0.003562592,
+        "max_ms": 0.0035925560000000002,
+        "mean_ms": 0.0035817120000000004,
+        "repetitions": 3
+      }
+    },
+    "object_25_environment_10_si_1": {
+      "released": 15,
+      "suppressed": 20,
+      "release_ratio": 0.4286,
+      "fetchAttributes": {
+        "median_ms": 0.002033796,
+        "min_ms": 0.0020179860000000003,
+        "max_ms": 0.0020836960000000003,
+        "mean_ms": 0.0020451593333333335,
+        "repetitions": 3
+      }
+    },
+    "object_25_environment_10_si_2": {
+      "released": 8,
+      "suppressed": 27,
+      "release_ratio": 0.2286,
+      "fetchAttributes": {
+        "median_ms": 0.0014858739999999999,
+        "min_ms": 0.00148289,
+        "max_ms": 0.001488886,
+        "mean_ms": 0.0014858833333333333,
+        "repetitions": 3
+      }
+    },
+    "object_100_environment_25_si_0": {
+      "released": 125,
+      "suppressed": 0,
+      "release_ratio": 1.0,
+      "fetchAttributes": {
+        "median_ms": 0.011000234000000001,
+        "min_ms": 0.010988376000000001,
+        "max_ms": 0.0111869,
+        "mean_ms": 0.011058503333333336,
+        "repetitions": 3
+      }
+    },
+    "object_100_environment_25_si_1": {
+      "released": 30,
+      "suppressed": 95,
+      "release_ratio": 0.24,
+      "fetchAttributes": {
+        "median_ms": 0.003188828,
+        "min_ms": 0.003175844,
+        "max_ms": 0.003218284,
+        "mean_ms": 0.0031943186666666666,
+        "repetitions": 3
+      }
+    },
+    "object_100_environment_25_si_2": {
+      "released": 8,
+      "suppressed": 117,
+      "release_ratio": 0.064,
+      "fetchAttributes": {
+        "median_ms": 0.00147039,
+        "min_ms": 0.001467784,
+        "max_ms": 0.001472612,
+        "mean_ms": 0.001470262,
+        "repetitions": 3
+      }
+    },
+    "object_500_environment_50_si_0": {
+      "released": 550,
+      "suppressed": 0,
+      "release_ratio": 1.0,
+      "fetchAttributes": {
+        "median_ms": 0.064456778,
+        "min_ms": 0.064045858,
+        "max_ms": 0.066732546,
+        "mean_ms": 0.065078394,
+        "repetitions": 3
+      }
+    },
+    "object_500_environment_50_si_1": {
+      "released": 55,
+      "suppressed": 495,
+      "release_ratio": 0.1,
+      "fetchAttributes": {
+        "median_ms": 0.005266155999999999,
+        "min_ms": 0.00515878,
+        "max_ms": 0.005305716,
+        "mean_ms": 0.005243550666666666,
+        "repetitions": 3
+      }
+    },
+    "object_500_environment_50_si_2": {
+      "released": 8,
+      "suppressed": 542,
+      "release_ratio": 0.0145,
+      "fetchAttributes": {
+        "median_ms": 0.001598218,
+        "min_ms": 0.00158954,
+        "max_ms": 0.0016012560000000001,
+        "mean_ms": 0.001596338,
+        "repetitions": 3
+      }
+    }
+  },
+  "validation": {
+    "eq1_honest": true,
+    "eq2_honest_1_rows": true,
+    "eq2_wrong_message_1_rows": false,
+    "eq2_honest_3_rows": true,
+    "eq2_wrong_message_3_rows": false,
+    "eq2_honest_5_rows": true,
+    "eq2_wrong_message_5_rows": false,
+    "eq3_honest": true,
+    "end_to_end_decision": "Permit"
+  }
+}
