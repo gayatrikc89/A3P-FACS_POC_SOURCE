@@ -17,6 +17,8 @@ A3P-FACS has two subsystems connected by the context handler:
 1. **Anonymous attribute-based credential system:** KGC, AA, AU and the Subject.
 2. **Attribute-based access control system:** PEP, context handler, PIP with the privacy-aware module interface, PAP and PDP.
 
+As in Figure 3, the subject's request `ReqGetAccess(objectId, op)` is received by the context handler, which mediates the anonymous credential exchange (`ReqShowCredential(τ, m)` / PC) before the XACML request context is formed, so that only the PC, and never plaintext subject attributes, reaches the PDP. The PEP enforces the decision forwarded by the context handler.
+
 ```mermaid
 flowchart LR
   subgraph CRED["Anonymous attribute-based credential system (protocol.py)"]
@@ -40,8 +42,9 @@ flowchart LR
   S <--> KGC
   S <--> AA
   AU <--> AA
-  S <--> PEP
-  PEP <--> CH
+  S -- "ReqGetAccess(objectId, op)" --> CH
+  CH -- "RespDecision" --> PEP
+  PEP -- "EnforceAccessDecision" --> S
   CH <--> PIP
   CH <--> PAP
   CH <--> PDP
@@ -134,13 +137,14 @@ The signatures use the paper's names, followed by the code name in brackets. *In
 
 | API | In | Out | Message |
 |---|---|---|---|
-| `getAccessDecision(subject, object_id, op)` [`get_access_decision`] | resource id, operation | `Decision` | `ReqGetAccess(objectId, op)` (Subject → PEP → context handler) |
+| `getAccessDecision(decision)` [`get_access_decision`] | `Decision` forwarded by the context handler | `Decision` | `RespDecision` (context handler → PEP) |
 | `enforceAccessDecision(decision)` [`enforce_access_decision`] | `Decision` | `AccessResult(granted, decision)`; only `Permit` grants access (deny-biased PEP) | `EnforceAccessDecision` |
 
 ### 3.6 Context handler
 
 | API | In | Out | Message |
 |---|---|---|---|
+| `ReqGetAccess(objectId, op)` [`request_access(subject, object_id, op)`] | resource id, operation | `AccessResult` | entry point: Subject → context handler; the decision is forwarded to the PEP for enforcement (Figure 3) |
 | `getAccessRequest(object_id, op)` [`get_access_request(subject, object_id, op)`] | resource id, operation | `Decision` | orchestrates the whole Resource Access Control phase (Section 4) |
 | `requestSignature(τ, m)` [`request_signature(subject, taus, m)`] | predicate set `{τ}`, fresh `m` | one `PC` per `τ` | `ReqShowCredential` / `RespVerifyCredential(PC)` |
 | request-context construction | PC, `m`, minimised attributes, op | `RequestContext` (Section 5.2) | `RespVerifyCredential(PC)` (context handler → PDP) |
@@ -213,7 +217,6 @@ sequenceDiagram
     participant PAP
     participant PDP
     S->>CH: ReqGetAccess(objectId=ehr-001, op=read)
-    CH->>PEP: ReqGetAccess(objectId=ehr-001, op=read)
     CH->>AU: CheckRevocationList(pk_s)
     CH->>PIP: ReqFetchAttributes(object_id=ehr-001)
     PIP->>CH: RespFetchAttributes({oAtt}=1, {eAtt}=1, SI=2)
